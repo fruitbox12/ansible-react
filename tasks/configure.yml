@@ -47,10 +47,10 @@
           become: true
           become_user: "{{ react_local_user }}"
 
-        - name: remove node_modules manually
-          file:
-            path: "{{ react_checkout_path }}/node_modules"
-            state: absent
+        - name: Remove node modules manually
+          command: rm -rf node_modules/
+          args:
+            chdir: "{{ react_local_checkout_path }}"
           delegate_to: localhost
           become: true
           become_user: "{{ react_local_user }}"
